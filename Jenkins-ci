@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Docker Build & Push via Ansible') {
             steps {
-                sh 'ansible-playbook -i inventory.ini playbook-delivery.yml'
+                sh 'ansible-playbook -i inventory.ini playbook-delivery.yml --ask-vault-pass'
             }
         }
         stage('Clean Old Docker Images on Local') {
