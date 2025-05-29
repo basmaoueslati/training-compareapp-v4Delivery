@@ -16,9 +16,9 @@ pipeline {
             steps {
                 withCredentials([
                     usernamePassword(
-                        credentialsId: 'docker',              // Your existing credentials ID
-                        usernameVariable: 'DOCKER_USERNAME',  // Jenkins sets this env var
-                        passwordVariable: 'DOCKER_PASSWORD'   // Jenkins sets this env var
+                        credentialsId: 'docker',              
+                        usernameVariable: 'DOCKER_USERNAME', 
+                        passwordVariable: 'DOCKER_PASSWORD'  
                     )
                 ]) {
                     sh '''
