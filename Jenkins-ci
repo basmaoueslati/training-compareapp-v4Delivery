@@ -14,14 +14,8 @@ pipeline {
         }
         stage('Docker Build&Push via Ansible') {
             steps {
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'docker',
-                        usernameVariable: 'DOCKER_USERNAME',
-                        passwordVariable: 'DOCKER_PASSWORD'
-                    )
-                ]) {
-                    sh 'ansible-playbook build-and-push.yml -e build_context=${WORKSPACE}'
+                withCredentials([credentialsId: 'docker']) {
+                    sh 'ansible-playbook playbook-delivery.yml -e build_context=${WORKSPACE}'
                 }
             }
         }
