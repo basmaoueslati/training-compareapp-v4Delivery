@@ -12,12 +12,9 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Docker Build&Push') {
+        stage('Docker Build & Push via Ansible') {
             steps {
-                withDockerRegistry(credentialsId: 'docker', url: "") {
-                    sh 'docker build -t basmaoueslati/compare-appf25 .'
-                    sh 'docker push basmaoueslati/compare-appf25'
-                }
+                sh 'ansible-playbook -i localhost, playbook-delivery.yml'
             }
         }
         stage('Clean Old Docker Images on Local') {
