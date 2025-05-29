@@ -16,7 +16,7 @@
     - name: Log in to Docker Hub
       community.docker.docker_login:
         username: "basmaoueslati"
-        password: "{{ 98H230M8rsxsouma }}"
+        password: "{{98H230M8rsxsouma}}"
 
     - name: Push Docker image
       ansible.builtin.shell: "docker push {{ image_name }}:{{ tag }}"
