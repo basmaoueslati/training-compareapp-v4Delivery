@@ -1,0 +1,19 @@
+- name: Build and Push Docker Image
+  hosts: localhost
+  vars:
+    image_name: basmaoueslati/compare-appf25
+    tag: v3
+  tasks:
+    - name: Build Docker image
+      community.docker.docker_image:
+        name: "{{ image_name }}"
+        tag: "{{ tag }}"
+        build:
+          path: .
+        source: build
+
+    - name: Push Docker image
+      community.docker.docker_image:
+        name: "{{ image_name }}"
+        tag: "{{ tag }}"
+        push: true
