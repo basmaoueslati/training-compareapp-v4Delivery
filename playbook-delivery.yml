@@ -4,7 +4,7 @@
   vars:
     image_name: basmaoueslati/compare-appf25
     tag: latest
-    docker_registry_url: https://hub.docker.com/repositories/
+    docker_registry_url: https://hub.docker.com/
   tasks:
     - name: Build Docker image
       community.docker.docker_image:
