@@ -15,8 +15,9 @@
 
     - name: Log in to Docker Hub
       community.docker.docker_login:
-        username: "basmaoueslati"
-        password: "{{98H230M8rsxsouma}}"
+        username: "docker_username"
+        password: "{{docker_password}}"
+        registry_url: basmaoueslati/compare-appf25
 
     - name: Push Docker image
       ansible.builtin.shell: "docker push {{ image_name }}:{{ tag }}"
