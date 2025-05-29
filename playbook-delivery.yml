@@ -1,5 +1,5 @@
 - name: Build and Push Docker Image
-  hosts: dockerC
+  hosts: localhost
   vars:
     image_name: basmaoueslati/compare-appf25
     tag: v3
