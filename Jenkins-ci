@@ -14,7 +14,9 @@ pipeline {
         }
         stage('Docker Build & Push via Ansible') {
             steps {
-                sh 'ansible-playbook -i localhost, playbook-delivery.yml --ask-vault-pass docker_credentials.yml'
+                sh 'ansible-playbook -i localhost, playbook-delivery.yml \
+              --ask-vault-pass \
+              -e @docker_cred.yml '
             }
         }
         stage('Clean Old Docker Images on Local') {
