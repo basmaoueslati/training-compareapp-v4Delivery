@@ -14,7 +14,8 @@ pipeline {
         }
         stage('Docker Build & Push via Ansible') {
             steps {
-                sh 'ansible-playbook -i inventory.ini playbook-delivery.yml --vault-password-file docker_credentials.yml'
+                sh 'ansible-playbook -i inventory.ini playbook-delivery.yml \
+               --extra-vars "docker_username=basmaoueslati docker_password=98H230M8rsxsouma"'
             }
         }
         stage('Clean Old Docker Images on Local') {
