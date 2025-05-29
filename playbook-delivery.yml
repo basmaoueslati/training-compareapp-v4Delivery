@@ -3,7 +3,7 @@
   connection: local
   vars:
     image_name: basmaoueslati/compare-appf25
-    tag: v3
+    tag: latest
   tasks:
     - name: Build Docker image
       community.docker.docker_image:
@@ -13,8 +13,10 @@
           path: .
         source: build
 
+    - name: Log in to Docker Hub
+      community.docker.docker_login:
+        username: "basmaoueslati"
+        password: "{{ 98H230M8rsxsouma }}"
+
     - name: Push Docker image
-      community.docker.docker_image:
-        name: "{{ image_name }}"
-        tag: "{{ tag }}"
-        source: push
+      ansible.builtin.shell: "docker push {{ image_name }}:{{ tag }}"
